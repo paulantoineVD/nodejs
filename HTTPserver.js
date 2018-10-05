@@ -15,7 +15,7 @@ server.on('request', (request, response) => {
         if(err) 
         {
             //Print the error or 404 web page
-            fs.readFile("404.html", 'utf-8', (err, data) => {
+            fs.readFile("src/404.html", 'utf-8', (err, data) => {
                 
                 if(err)
                 {
