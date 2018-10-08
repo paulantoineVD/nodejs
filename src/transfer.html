@@ -15,9 +15,9 @@
         <p>Choisir un fichier</p>
 
         <form>
-            <input id="origine" name="origine" placeholder="origine">
-            <input id="destination" name="destination" placeholder="destination">
-            <button id="choose_origine" type="submit">Envoyer</button>
+            <input id="origine" name="origine" type="file" placeholder="origine">
+            <input type="file" onchange="selectFolder(event);" webkitdirectory mozdirectory msdirectory odirectory directory multiple="multiple" />
+                        <button id="choose_origine" type="submit">Envoyer</button>
         </form>
     </div>
 </body>
