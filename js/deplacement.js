@@ -1,27 +1,35 @@
-var fs = require('fs');
-var file = 'test.txt'
-
-let read = fs.createReadStream(file)
-
-fs.stat(file, (err, stat) => {
-    let total = stat.size
-
-    let progress = 0
-
-    let write = fs.createWriteStream('copy.txt')
+let fs = require('fs');
+let bp = require('body-parser');
 
 
-    read.on('data', (chunk) => {
-        progress += chunk.length
+    function deplacerFichier(file)
+    {
+        let file = 'test.txt'
 
-        console.log("J'ai lu " + Math.round((100*progress / chunk.length)) + "%")
+        let read = fs.createReadStream(file)
         
-    })
-    
-    
-    read.pipe(write)
-    
-    write.on('finish', () => {
-        console.log("Le fichier a bien été copié")
-    })
-})
+        fs.stat(file, (err, stat) => {
+            let total = stat.size
+        
+            let progress = 0
+        
+            let write = fs.createWriteStream('copy.txt')
+        
+        
+            read.on('data', (chunk) => {
+                progress += chunk.length
+        
+                console.log("J'ai lu " + Math.round((100*progress / chunk.length)) + "%")
+                
+            })
+            
+            read.pipe(write)
+            
+            write.on('finish', () => {
+                console.log("Le fichier a bien été copié")
+            })
+        })
+    }
+
+
+
